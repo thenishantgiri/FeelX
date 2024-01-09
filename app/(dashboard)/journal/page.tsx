@@ -1,5 +1,6 @@
 import EntryCard from '@/components/EntryCard';
 import NewEntryCard from '@/components/NewEntryCard';
+import { analyze } from '@/utils/ai';
 import { getUserFromClerkID } from '@/utils/auth';
 import { prisma } from '@/utils/db';
 import Link from 'next/link';
@@ -17,6 +18,12 @@ const getEntries = async () => {
       analysis: true,
     },
   });
+
+  /**
+   * GPT-3.5-turbo: gpt call
+   *
+   * await analyze('write a c++ code for 1-10 loop');
+   */
 
   return entries;
 };
